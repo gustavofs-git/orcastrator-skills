@@ -1,0 +1,12 @@
+{
+  "production": {
+    "environment": "",
+    "command_patterns": []
+  },
+  "sensitive_paths": [".env", ".env.*", "secrets/", "data/raw/**"],
+  "fixture_policy": "synthetic-only",
+  "tracker": {
+    "adapter": "none",
+    "mirror_tasks": false
+  }
+}

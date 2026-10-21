@@ -1,0 +1,24 @@
+# Contract for one PySpark table. Lives next to the job (for example src/<pkg>/schemas/<table>.yml).
+# The job validates its output against this file before writing; a contract test fails if they differ.
+# Keys mirror dbt's model YAML. Change it in the same PR as the code.
+models:
+  - name: <schema>.<table>            # e.g. bronze.shop_orders
+    description: <one line: what a row is>
+    config:
+      contract:
+        enforced: true
+      meta:
+        grain: <one row per ...>
+        partition: <e.g. date(order_ts)>
+        pii: <none | pseudonymized | personal>   # class names from docs/architecture.md
+        freshness: <e.g. D-1 by 08:00>
+        version: 1                    # goes up on a breaking change
+    columns:
+      - name: <column>
+        data_type: <string | int | bigint | decimal(18,2) | date | timestamp | boolean | array<string> | ...>
+        description: <meaning; what NULL means if nullable>
+        constraints:
+          - type: not_null            # omit for nullable columns
+        config:
+          meta:
+            pii: <none | pseudonymized | personal>
