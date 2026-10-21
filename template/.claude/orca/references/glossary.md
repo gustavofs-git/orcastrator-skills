@@ -48,7 +48,9 @@ An approval counts only when it is written in the artifact. It is never inferred
 
 ## Contracts, tests and checks
 
-- **Contract.** A table's grain, keys, columns, types, NULL meaning, PII class and freshness, as executable schema next to the code: dbt model YAML with an enforced contract, or a PySpark schema file plus a contract test. Never a hand-written document.
+- **Contract.** A table's grain, keys, columns, types, NULL meaning, PII class and freshness, as executable schema next to the code, in the form the stack profile defines (for example a dbt model YAML with an enforced contract, or a schema file plus a contract test). Never a hand-written document.
+- **Stack profile.** `.claude/orca/references/stacks/<name>.md`: this repo's commands, test levels, contract pattern and floor guard patterns. The shipped dbt and pyspark profiles are examples; `/orca-init` adapts them or writes a new one.
+- **Platform commands.** The table in `docs/conventions.md` with the exact commands for this repo's code host and tracker (open PR, comment, merge, close item, ...). Stages use it instead of assuming `gh`.
 - **Test.** Proves the code is right, before merge, on synthetic fixtures.
 - **Check.** Proves the data is right, on every load, on real data, with a severity (`error` or `warn`).
 - **Floor guard.** Detects a diff that lowers the bar to get green (a new skip, a lowered severity, a `DISTINCT` hiding duplicates).

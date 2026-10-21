@@ -18,7 +18,7 @@ Read [discovery-rules.md](discovery-rules.md) before Step 2.
 
 - `specs/<id>-*/1-brief.md`.
 - The relevant parts of `docs/`: `architecture.md`, `conventions.md`, `testing.md`, the ADR titles in `docs/adr/`, and `docs/sources/` for any source the item touches.
-- The code, contracts (dbt model YAML, PySpark schema files) and tests related to the item.
+- The code, contracts (where the stack profile says they live) and tests related to the item.
 - The stack profile named in `docs/architecture.md` (`.claude/orca/references/stacks/<profile>.md`), for lineage and test commands.
 
 **Current state lives in code and schema, never in old specs.** A spec in `specs/` is the record of a past change. Read one only to learn why something was done.

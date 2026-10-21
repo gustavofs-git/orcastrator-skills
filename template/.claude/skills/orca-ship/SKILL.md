@@ -15,7 +15,7 @@ Work item: $ARGUMENTS
 ## Step 0: Check the gates
 
 From `specs/<id>-*/`:
-- Every task in `4-plan.md` has `State: merged`. Confirm each with `gh pr view <n> --json state`.
+- Every task in `4-plan.md` has `State: merged`. Confirm each with the "PR state" command from Platform commands in `docs/conventions.md`.
 - Every requirement has evidence: a test in a merged PR, or real-data evidence in an `orca-qa verdict` comment. Requirements marked `already covered` or `deferred` count as handled.
 - An open question with `blocks: ship` has an answer.
 
@@ -53,12 +53,12 @@ Tick each line in `## Delivery` with its evidence (a count, a snapshot id, a lin
 
 ## Step 3: Record
 
-Delegate to the `tech-writer` agent with: the item id and title, the PR numbers, the spec path, and the telemetry file `.orca/telemetry/sessions.jsonl` if it exists. It writes the `CHANGELOG.md` entry and the `docs/build-log.md` entry, with the item's cost or "unknown".
+Delegate to the `tech-writer` agent with: the item id and title, the PR numbers, the "view PR" command, the spec path, and the telemetry file `.orca/telemetry/sessions.jsonl` if it exists. It writes the `CHANGELOG.md` entry and the `docs/build-log.md` entry, with the item's cost or "unknown".
 
 ## Step 4: Close the item and end the turn
 
 When every line in `## Delivery` is checked:
-1. Close the item in the tracker with a short summary comment (tracker adapter `.claude/orca/scripts/tracker close <id>`; on GitHub without the adapter, `gh issue close <id> --comment ...`). This is an external action: show the comment, then close after a yes.
+1. Close the item in the tracker with a short summary comment (the "close work item" command). This is an external action: show the comment, then close after a yes.
 2. Reply with what was delivered, the CHANGELOG line, the build-log line, and any follow-up work item.
 3. End the turn.
 

@@ -24,7 +24,7 @@ The task's `State` decides the mode:
 | State | Mode |
 |---|---|
 | `open` | **New:** implement the task and open a draft PR. |
-| `PR #<n>` | **Fix:** read the latest `orca-qa verdict` comment on PR #n (`gh pr view <n> --comments`). If it says REQUEST CHANGES, fix on that PR's branch. If it says APPROVE, or there is none, stop: "Nothing to fix; run `/orca-qa <n>`." |
+| `PR #<n>` | **Fix:** read the latest `orca-qa verdict` comment on PR #n (the "read PR comments" command from Platform commands in `docs/conventions.md`). If it says REQUEST CHANGES, fix on that PR's branch. If it says APPROVE, or there is none, stop: "Nothing to fix; run `/orca-qa <n>`." |
 | `merged` | Stop: the task is done. |
 
 ## Step 1: Prepare the agent's input
@@ -32,9 +32,9 @@ The task's `State` decides the mode:
 The agent's worktree starts from the remote default branch. It cannot see files that exist only in this checkout, such as `specs/`. So copy into its prompt, verbatim:
 1. the task section from `4-plan.md` (title, Covers, Requirements, Context to load, Touches, Verify);
 2. the spec sections the task's "Context to load" names (usually Design and Boundaries), from `3-spec.md`;
-3. from `docs/conventions.md`: the integration branch, branch naming, commit format;
+3. from `docs/conventions.md`: the integration branch, branch naming, commit format, and the Platform commands "open draft PR" and "comment on PR";
 4. the stack profile name from `docs/architecture.md`;
-5. in fix mode: the PR number, its head branch, and the full verdict comment (findings and any reproduction tests to add).
+5. in fix mode: the PR number, its source branch, and the full verdict comment (findings and any reproduction tests to add).
 
 Do not add your own summary or reasoning. Do not add other files. If a file in "Context to load" exists only in this checkout and not on the remote integration branch, include its content in the prompt and say so.
 

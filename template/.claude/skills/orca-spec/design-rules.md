@@ -30,7 +30,7 @@ Grain: region × day. Key: (region_name, sale_date). Partition or materializatio
 PII class: none. Freshness: D-1 by 08:00.
 ```
 
-Say where the contract lives: the dbt model YAML, or the PySpark schema file next to the job. The build changes it in the same PR as the code.
+Say where the contract lives, as the stack profile defines it (for example the dbt model YAML, or a schema file next to the job). The build changes it in the same PR as the code.
 
 **Approach.** The decisions, each with the requirements it meets.
 

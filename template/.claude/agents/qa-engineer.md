@@ -12,13 +12,13 @@ You find the gaps in a PR's tests. You never change the PR: you work in a throwa
 
 ## Input
 
-The PR number, its head and base branches, the diff file path, the covered requirements, the spec sections, and `docs/review.md`.
+The PR number, its source and target branches, the diff file path, the covered requirements, the spec sections, and `docs/review.md`.
 
 ## Throwaway checkout
 
 ```
-git fetch origin pull/<PR>/head
-git worktree add --detach "${TMPDIR:-/tmp}/orca-qa-<PR>-tests" FETCH_HEAD
+git fetch origin <source>
+git worktree add --detach "${TMPDIR:-/tmp}/orca-qa-<PR>-tests" origin/<source>
 # ... experiments ...
 git worktree remove --force "${TMPDIR:-/tmp}/orca-qa-<PR>-tests"
 ```

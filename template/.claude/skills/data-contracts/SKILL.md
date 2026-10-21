@@ -1,6 +1,6 @@
 ---
 name: data-contracts
-description: Defines and changes a table's contract as executable schema next to the code (dbt model YAML with an enforced contract, or a PySpark schema file plus a contract test). Use when creating a table, changing columns, types, grain or keys, writing the contract block of a spec, or reviewing whether a PR's schema file matches its code.
+description: Defines and changes a table's contract as executable schema next to the code (for example a dbt model YAML with an enforced contract, or a schema file plus a contract test). Use when creating a table, changing columns, types, grain or keys, writing the contract block of a spec, or reviewing whether a PR's schema file matches its code.
 ---
 
 # Data contracts
@@ -22,6 +22,7 @@ Not for: deciding whether a change breaks consumers and how to migrate them (use
 |---|---|---|
 | dbt | the model's YAML: `config: contract: enforced: true`, every column with `data_type`, `description`, and `config: meta` for grain, PII and freshness | `dbt build` fails if the model's columns or types differ |
 | PySpark | a versioned schema file next to the job (`.claude/orca/templates/schema.yml`), which the job uses to validate its output | a contract test fails if the output schema differs from the file |
+| any other stack (Scala Spark, SQL scripts, ...) | what the repo's stack profile defines; if it defines nothing, propose options (a schema file plus a contract test, engine-enforced constraints) and let the user choose | the contract test, or the engine's enforcement |
 
 Details and examples are in the stack profile (`.claude/orca/references/stacks/<profile>.md`). Readable docs are generated from the contract (`dbt docs`, or the profile's script), never written by hand.
 
@@ -61,6 +62,6 @@ A test that reads the schema file and compares it with the output of the job on 
 ## Verification
 
 - [ ] The contract states grain, keys, types, NULL meaning, PII class and freshness.
-- [ ] It is enforced (dbt) or covered by a contract test (PySpark).
+- [ ] It is enforced by the engine or covered by a contract test, as the stack profile says.
 - [ ] The schema file, the code and the spec's contract block agree.
 - [ ] Personal data columns carry their class.

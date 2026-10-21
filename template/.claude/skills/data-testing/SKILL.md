@@ -37,6 +37,8 @@ Use the commands in `docs/architecture.md` and the stack profile (`.claude/orca/
 | Contract | the output schema did not change silently | enforced contracts | schema test against the schema file |
 | Integration | it works on the real engine | slim CI in a dev schema | job in dev on a sample (via `/orca-qa`) |
 
+Other stacks: the stack profile's Tests table gives the form for each level.
+
 ## The cycle
 
 1. **RED.** Write a hand-written synthetic fixture: one minimal record per case. Assert on the **output table**: rows, keys, values. Run it; it must fail, for the reason you expect.

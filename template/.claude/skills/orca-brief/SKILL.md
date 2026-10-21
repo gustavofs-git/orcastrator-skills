@@ -15,7 +15,7 @@ Work item: $ARGUMENTS
 ## Read first
 
 - `docs/product.md`. Never ask what it already answers.
-- The item in the tracker, through the tracker adapter (`.claude/orca/scripts/tracker view <id>`). On GitHub without the adapter, use `gh issue view <id>`.
+- The item in the tracker, with the "view work item" command from Platform commands in `docs/conventions.md`.
 - `specs/<id>-*/1-brief.md`, if it exists.
 
 Do not read code. The brief is about intent; the code is the discover stage's job.
@@ -117,7 +117,7 @@ Only an explicit "yes" confirms. These do not: "sounds good", "whatever you thin
 
 ## Step 6: Write the file and end the turn
 
-1. Ad hoc request: offer to create the ticket from `.claude/orca/templates/issue.md`. This is an external action; create it only after the user agrees, and use its id as `<n>`. If the user declines, or no tracker is configured, use the next free number.
+1. Ad hoc request: offer to create the ticket from `.claude/orca/templates/issue.md`, with the "create work item" command. This is an external action; create it only after the user agrees, and use its id as `<n>`. If the user declines, or no tracker is configured, use the next free number.
 2. Copy `.claude/orca/templates/brief.md` to `specs/<n>-<slug>/1-brief.md` and fill it in. Remove the template comments.
    - After an explicit yes: `Status: confirmed (<today>)`.
    - If the user stops the interview before a yes: `Status: draft`, with what you know. The next run continues from it.

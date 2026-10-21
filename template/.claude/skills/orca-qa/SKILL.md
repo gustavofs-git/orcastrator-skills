@@ -14,13 +14,13 @@ PR: $ARGUMENTS
 
 ## Step 0: Gather the context
 
-- `gh pr view <PR> --json title,body,headRefName,baseRefName,isDraft` and `gh pr diff <PR>`. The PR body names the item and task.
+- The PR, with the "view PR" command from Platform commands in `docs/conventions.md`: title, body, source and target branches, draft state. The PR body names the item and task.
 - From `specs/<item>-*/`: the task section in `4-plan.md`, and the spec sections it names.
 - `docs/review.md`.
 
 If the PR body does not name an item and task, stop and ask which task it implements.
 
-Write the diff to a temporary file (`gh pr diff <PR> > "${TMPDIR:-/tmp}/orca-qa-<PR>.diff"`). Reviewers read it from there.
+Write the diff to a temporary file with the "PR diff" command (`... > "${TMPDIR:-/tmp}/orca-qa-<PR>.diff"`). Reviewers read it from there.
 
 ## Phase 1: Review (read-only)
 
@@ -29,7 +29,7 @@ Follows the `code-review-and-quality` approach from agent-skills, adapted to dat
 ### 1. Fan out
 
 Delegate to the three reviewers **in one message, so they run in parallel**. Each gets the same input and nothing else:
-- the PR number, its head and base branches, and the diff file path;
+- the PR number, its source and target branches, and the diff file path;
 - the covered requirements, copied verbatim from the task;
 - the spec sections the task names (Design, Boundaries);
 - the path `docs/review.md`.
@@ -59,7 +59,7 @@ Every finding cites `file:line`. Critical and Required findings carry a suggeste
 - **REQUEST CHANGES** if any Critical or Required finding is open. A Required finding can be deferred only with a written reason in the verdict.
 - **APPROVE** otherwise. Approve when the change improves the code's health, even if it is not perfect. Never APPROVE with an open Critical.
 
-Show the verdict to the user and ask: "Post the review to PR #<n>?" Posting is an external action. After a yes, post the inline comments and the verdict comment (format below).
+Show the verdict to the user and ask: "Post the review to PR #<n>?" Posting is an external action. After a yes, post them with the "comment on PR" command: inline comments where the platform supports them, and the verdict comment (format below).
 
 With REQUEST CHANGES, end the turn with: "Run `/orca-build <item> <task>` to fix, then `/orca-qa <PR>` again."
 
@@ -93,13 +93,13 @@ Real data (dev, <window>)
 This verdict does not replace human approval.
 ```
 
-Optional and Nit findings go in inline comments only.
+Optional and Nit findings go in inline comments. If the platform has no inline comment command, list them at the end of the verdict comment.
 
 ## Merge
 
 After APPROVE in both phases:
-1. Tell the user the PR needs human approval. Check it with `gh pr view <PR> --json reviewDecision`. An agent's approval never counts as human.
-2. Merge only when the user does it, or says to merge after approving. Use the merge strategy in `docs/conventions.md`. Mark the PR ready first if it is a draft.
+1. Tell the user the PR needs human approval. Check it with the "human approval status" command. An agent's approval never counts as human.
+2. Merge only when the user does it, or says to merge after approving. Use the "merge" command and the merge strategy in `docs/conventions.md`. Mark the PR ready first ("mark ready for review") if it is a draft.
 3. After the merge, set the task's `State: merged` in `4-plan.md` and tick its requirement boxes.
 4. Reply with the next command: the next open task (`/orca-build <item> T<n>`), or `/orca-ship <item>` when every task is merged. End the turn.
 

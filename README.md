@@ -4,7 +4,7 @@ A `.claude/` folder you copy into a data repo. It turns Claude Code into a small
 
 **Thesis:** one engineer with the right process, guardrails and telemetry can deliver what a data team delivers, and every step leaves evidence a reviewer can audit.
 
-Focus: data engineering first, then analytics engineering and data platform work. Stack profiles: **dbt / SQL warehouse** and **PySpark**. Claude Code only.
+Focus: data engineering first, then analytics engineering and data platform work. Stack profiles ship for **dbt / SQL warehouse** and **PySpark** as examples. They are not requirements: `/orca-init` adapts them, or writes a new profile, for the stack and platform your repo actually uses (Azure DevOps instead of GitHub, Databricks with Scala instead of dbt, ...). Claude Code only.
 
 It adapts [agent-skills](https://github.com/addyosmani/agent-skills) by Addy Osmani (MIT) to data work.
 
@@ -60,7 +60,7 @@ template/.claude/
     ├── config.json   filled by /orca-init
     ├── references/   definition of done, glossary, stack profiles (dbt, pyspark)
     └── templates/    brief, discovery, spec, plan, ADR, source profile, PR, issue,
-                      delivery checklist, PySpark schema, docs/ templates
+                      delivery checklist, PySpark schema, stack profile, docs/ templates
 ```
 
 | Agent | Role | Model |
@@ -81,7 +81,7 @@ No agent can start another agent. The only fan-out is the three reviewers in `/o
 2. Open Claude Code there and run `/orca-init`.
 3. For each work item, start with `/orca-brief <item>`.
 
-You need Claude Code, git, and the GitHub CLI (`gh`) if your tracker and PRs are on GitHub.
+You need Claude Code, git, and the CLI for your code host and tracker (`gh`, `az`, `glab`, ...). `/orca-init` records the exact commands in `docs/conventions.md`.
 
 ## Adopting it in a team
 

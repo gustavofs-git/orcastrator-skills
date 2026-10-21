@@ -20,7 +20,7 @@ Supporting files, read when the step needs them:
 
 - `specs/<id>-*/1-brief.md` and `2-discovery.md`.
 - ADR titles only: the first line of each file in `docs/adr/`. Open an ADR only if the discovery cites it.
-- The contracts the discovery cites (dbt model YAML or PySpark schema files).
+- The contracts the discovery cites.
 - `docs/review.md`, for what counts as Critical here.
 
 Do not read code beyond what the discovery cites.

@@ -5,7 +5,7 @@
 <!-- Languages and versions, engine, table format, orchestrator, transformation tool, package manager. -->
 
 ## Stack profile
-<!-- Which Orcastrator profile(s) apply: dbt, pyspark, or both. Example: "profile: dbt [confirmed]" -->
+<!-- File name(s) of the profile(s) in .claude/orca/references/stacks/ that match this repo: a shipped one (dbt, pyspark), an adapted copy, or one written by /orca-init. Example: "profile: databricks-scala [confirmed]" -->
 
 ## Repos
 <!-- Monorepo or several repos; what lives where; what this repo must not edit. Example: "company-dbt-utils: consume only; changes go to the platform repo [confirmed]" -->

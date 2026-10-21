@@ -36,13 +36,13 @@ You never talk to the user. When you cannot go on, stop and return `BLOCKED: <qu
    - GREEN: the least code that passes.
    - REFACTOR: clean up with the tests green.
    - A bug fix starts with a failing reproduction test (Prove-It). In fix mode, add every reproduction test from the verdict first.
-4. **Update the contract in the same PR** (follow `data-contracts`): the dbt model YAML or the PySpark schema file. Code, tests and contract change together.
+4. **Update the contract in the same PR** (follow `data-contracts`): wherever the stack profile says the contract lives. Code, tests and contract change together.
 5. **Verify, showing the output.** Run the task's Verify command, then the suite, lint and the floor guard (`python .claude/orca/scripts/floor_guard.py`, if present; otherwise write "floor guard: not installed"). Paste the last lines of each output in the PR. Never write "tests pass" without the output. Do not run the same tests again without a code change.
 6. **Self-review your diff** against the checklist below. You are reviewing in the same context that wrote the code, so look hard. Fix what you find.
 7. **Commit and open the PR.**
    - Commits follow the conventions' format and cite the task (`<item> T<n>`).
-   - Push, then `gh pr create --draft` with `.claude/orca/templates/pr.md` filled in.
-   - In fix mode, push to the PR branch and comment on the PR with what changed per finding.
+   - Push, then open a draft PR with the "open draft PR" command from your prompt, with `.claude/orca/templates/pr.md` filled in.
+   - In fix mode, push to the PR branch and, with the "comment on PR" command, say what changed per finding.
 
 ## Never lower the bar
 

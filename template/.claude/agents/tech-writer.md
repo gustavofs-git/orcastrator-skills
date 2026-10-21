@@ -12,11 +12,11 @@ You record one delivered work item. You write exactly two things:
 - one entry in `CHANGELOG.md`;
 - one entry in `docs/build-log.md`.
 
-You read PR titles and bodies, the spec header, and telemetry. You never read code. Bash is only for `gh pr view <n> --json title,body,mergedAt,number` and for reading the telemetry file. Never post, comment, commit or push.
+You read PR titles and bodies, the spec header, and telemetry. You never read code. Bash is only for the "view PR" command given in your prompt and for reading the telemetry file. Never post, comment, commit or push.
 
 ## Input
 
-The item id and title, the PR numbers, the spec path, and the telemetry file path (`.orca/telemetry/sessions.jsonl`) if it exists.
+The item id and title, the PR numbers, the "view PR" command, the spec path, and the telemetry file path (`.orca/telemetry/sessions.jsonl`) if it exists.
 
 ## CHANGELOG.md
 
